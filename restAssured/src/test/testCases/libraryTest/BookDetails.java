@@ -4,26 +4,28 @@ import static io.restassured.RestAssured.given;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Properties;
 
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import DataProviders.Library_DataProvider;
+import Excel.DataProviderClass;
 import Payload_Resources.Payload;
 import Payload_Resources.Resources;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-public class BookDetails extends Library_DataProvider
+public class BookDetails 
 {
 	Properties properties = new Properties();
 
-	@BeforeTest
+	@BeforeSuite
 	public void getData() throws IOException
 	{
-		FileInputStream fileinputstream = new FileInputStream("/Users/300069257/Desktop/REST ASSURED/restAssured/src/main/generic/properties/envy.properties");
+		FileInputStream fileinputstream = new FileInputStream("/Users/300069257/git/RESTAPI_Automation/restAssured/src/main/generic/properties/envy.properties");
 		properties.load(fileinputstream);
 		
 	}
@@ -50,15 +52,15 @@ public class BookDetails extends Library_DataProvider
 	}
 	
 	
-	@Test(dataProvider = "postMethod_DataProvider")
-	public void postMethod(String isbn, String aisle)
+	
+	public void postMethod(Map<String,String> map)
 	{
 		
-		RestAssured.baseURI = properties.getProperty("Library_Host");
+		RestAssured.baseURI = "http://216.10.245.166";//properties.getProperty("Library_Host");
 		
 		Response res = 
 		given().
-		body(Payload.getPostPayload_2(isbn,aisle)).
+		body(Payload.getPostPayload_2(map.get("ISBN"),map.get("Aisle"))).
 
 		when().
 		post(Resources.postResource_libraryTest_1()).
