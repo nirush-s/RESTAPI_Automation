@@ -3,11 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Scenarios.TestScenario">
+      <class name="TestScenarios.GetBookDetails_Scenario">
         <methods>
-          <include name="testScenario" invocation-numbers="0 1"/>
+          <include name="getBookDetails_Scenario" invocation-numbers="0"/>
+          <include name="getData"/>
         </methods>
-      </class> <!-- Scenarios.TestScenario -->
+      </class> <!-- TestScenarios.GetBookDetails_Scenario -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

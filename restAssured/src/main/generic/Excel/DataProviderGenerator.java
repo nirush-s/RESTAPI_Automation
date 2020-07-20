@@ -1,5 +1,7 @@
 package Excel;
 
+
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +11,7 @@ public class DataProviderGenerator
 	public Object[][] objectGenerator(String excelName)
 	{
 		
-		String excelLocation = "/Users/300069257/git/RESTAPI_Automation/restAssured/TestData/TestData.xlsx";
+		String excelLocation = "/home/user/Desktop/RestAssuredFramework/RESTAPI_Automation/restAssured/TestData/"+excelName+"";
 		String sheetName = Excel.getSheetName(excelLocation, 0);
 		int rowCount = Excel.getRowCount(excelLocation,sheetName);
 		int numberOfSheets = Excel.getNumberofSheets(excelLocation);
@@ -23,7 +25,7 @@ public class DataProviderGenerator
 			
 			Map<Object, Object> map = new HashMap<Object, Object>();  
 			
-			System.out.println("Map created");
+			//System.out.println("Map created");
 			
 			for(int j=0;j<numberOfSheets;j++)
 			{
